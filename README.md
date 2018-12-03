@@ -3,30 +3,34 @@
 
 This tool helps you visualize, query and explore Word2Vec models. Word2Vec is a deep learning technique that feeds massive amounts of text into a shallow neural net which can then be used to solve a variety of NLP and ML problems.
 
+![SCREEN](https://raw.githubusercontent.com/cunum/word2vec-explorer/master/public/screenshots/screen.png)
+
 Word2Vec Explorer uses [Gensim](https://github.com/piskvorky/gensim) to list and compare vectors and it uses [t-SNE](https://github.com/danielfrg/tsne) to visualize a dimensional reduction of the vector space. [Scikit-Learn](http://scikit-learn.org/stable/) is used for K-Means clustering.
-
-The UI is built using [React](https://facebook.github.io/react/), [Babel](https://babeljs.io/), [Browserify](http://browserify.org/), [StandardJS](http://standardjs.com/), [D3](http://d3js.org) and [Three.js](http://threejs.org).
-
-![TSNE 10K](https://raw.githubusercontent.com/dominiek/word2vec-explorer/master/public/screenshots/tsne-10k.png?token=AABIgK4MtRPmjZz5pWmdlLwlZtC8-hBqks5W6aenwA%3D%3D)
-
-![TSNE Labels](https://raw.githubusercontent.com/dominiek/word2vec-explorer/master/public/screenshots/tsne-labels.png?token=AABIgEjLDw4w_O1CWfaLvQwSoroJUHhDks5W6ahRwA%3D%3D)
-
-![Vector Comparisons](https://raw.githubusercontent.com/dominiek/word2vec-explorer/master/public/screenshots/vector-comparison.png?token=AABIgEz7KfbtSuys4yjTW9Un3QoQ4BJLks5W6ahrwA%3D%3D)
 
 ### Setup
 
-To install all Python depenencies:
-
+Option 1: Clone the project and build the docker image by running in project directory
 ```bash
-pip install -r requirements.txt
+docker build . -t word2vec-visualizer
+```
+
+Option 2:
+Use the "official" docker image, and just run:
+```bash
+docker pull cunum/word2vec-visualizer
 ```
 
 ### Usage
 
-Load the explorer with a Word2Vec model:
+Option 1: Run the visualizer with a Word2Vec model
 
 ```bash
-./explore GoogleNews-vectors-negative300.bin
+docker run -p 8080:8080 -v /path/to/word2vec.model:/word2vec.model cunum.com/word2vec-visualizer
+```
+
+Option 2: Run the visualizer with plain text documents
+```bash
+docker run -p 8080:8080 -v /path/to/documents:/documents cunum.com/word2vec-visualizer
 ```
 
 Now point your browser at [localhost:8080](http://localhost:8080/) to load the explorer!
@@ -37,29 +41,10 @@ A classic example of Word2Vec is the Google News model trained on 600M sentences
 
 [More pre-trained models]](https://github.com/3Top/word2vec-api#where-to-get-a-pretrained-models)
 
-### Development
+### Local development
 
-In order to make changes to the user interface you will need some NPM dependencies:
-
-```bash
-npm install
-npm start
+- To install tsne you need openblas, on Mac with Homebrew type in terminal:
 ```
-
-The command `npm start` will automatically transpile and bundle any code changes in the `ui/` folder. All backend code can be found in `explorer.py` and `./explore`.
-
-Before submitting code changes make sure all code is compliant with StandardJS as well as Pep8:
-
-```bash
-standard
-pep8 --max-line-length=100 *.py explore
-```
-
-### Todo
-
-- 3D GPU/WebGL view (on branch `3d`)
-- Make sure axes stay when zooming/panning scatterplot
-- Autocomplete in query interface
-- Look into supporting other high dimensional data models (go beyond word vectors)
-- Drill-down of vector that shows real distance between neighbors
-- Improved sample rated view that takes into account term counts and connectedness
+brew install openblas
+LDFLAGS=-L/usr/local/opt/openblas/lib CPPFLAGS=-I/usr/local/opt/openblas/include
+``` 

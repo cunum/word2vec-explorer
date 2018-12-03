@@ -5,7 +5,7 @@ import cPickle
 import numpy as np
 from tsne import bh_sne
 from sklearn.cluster import KMeans
-
+from word2vec import create_model
 
 class Exploration(dict):
 
@@ -73,10 +73,13 @@ class Model(object):
 
     def __init__(self, filename):
         try:
-            self.model = gensim.models.Word2Vec.load(filename)
+            self.model = gensim.models.Word2Vec.load(filename).wv
         except cPickle.UnpicklingError:
-            load = gensim.models.Word2Vec.load_word2vec_format
-            self.model = load(filename, binary=True)
+            load = gensim.models.KeyedVectors.load_word2vec_format
+            self.model = load(filename, binary=True).wv
+        except IOError:
+            create_model()
+            self.model = gensim.models.Word2Vec.load(filename).wv
 
     def autocomplete(self, query, limit):
         words = []

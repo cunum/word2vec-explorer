@@ -1,14 +1,15 @@
 #!/usr/bin/env python
 
+import json
 import sys
 import os
+import numpy as np
 import cherrypy
 from cherrypy.lib.static import serve_file
 from explorer import Model
 
-STATIC_DIR = os.path.dirname(os.path.realpath(__file__)) + '/public'
+STATIC_DIR = os.path.dirname(os.path.realpath(__file__)) + '/../build'
 CACHE = {}
-
 
 class ApiController(object):
 
@@ -36,17 +37,20 @@ class ApiController(object):
         except KeyError:
             return {'error': {'message': 'No vector found for ' + query}}
 
+    def numpy_json_handler(*args, **kwargs):
+        value = cherrypy.serving.request._json_inner_handler(*args, **kwargs)
+        return json.dumps(value, cls=NumpyEncoder)
+
     @cherrypy.expose
-    @cherrypy.tools.json_out()
+    @cherrypy.tools.json_out(handler=numpy_json_handler)
     def compare(self, **kw):
         limit = kw.pop('limit', '100')
-        queries = kw.pop('queries[]', [])
+        queries = kw.pop('queries', [])
         try:
             result = self.model.compare(queries, limit=int(limit))
             return {'result': result}
         except KeyError:
-            return {'error':
-                    {'message': 'No vector found for {}'.format(queries)}}
+            return {'error': {'message': 'No vector found for {}'.format(queries)}}
 
     @cherrypy.expose
     @cherrypy.tools.json_out()
@@ -54,6 +58,18 @@ class ApiController(object):
         result = self.model.autocomplete(query, limit=int(limit))
         return {'result': result}
 
+class NumpyEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, (np.int_, np.intc, np.intp, np.int8,
+                            np.int16, np.int32, np.int64, np.uint8,
+                            np.uint16, np.uint32, np.uint64)):
+            return int(obj)
+        elif isinstance(obj, (np.float_, np.float16, np.float32,
+                              np.float64)):
+            return float(obj)
+        elif isinstance(obj,(np.ndarray,)): #### This is the fix
+            return obj.tolist()
+        return json.JSONEncoder.default(self, obj)
 
 class AppController(object):
 
@@ -80,4 +96,5 @@ if __name__ == '__main__':
             }
         })
     cherrypy.config.update( {'server.socket_host': '0.0.0.0'} )
-    cherrypy.quickstart(app)
+    cherrypy.engine.start()
+    cherrypy.engine.block()

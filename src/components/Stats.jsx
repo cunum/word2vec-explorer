@@ -1,7 +1,7 @@
+import React, { Component } from 'react'
 
-const React = require('react')
+class Stats extends Component {
 
-export default React.createClass({
   render () {
     let data = this.props.data
     const format = (x) => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
@@ -15,4 +15,6 @@ export default React.createClass({
       </div>
     )
   }
-})
+}
+
+export default Stats;

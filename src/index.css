@@ -1,28 +1,26 @@
-
-
 .loader {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: white;
+  background-color: black;
   opacity: 0.7;
   z-index: 9999;
 }
 
 .loader .spinner {
-   position: absolute;
-   top: 35%;
-   left: 45%;
-   margin-left: -(70px/2);
-   margin-top: -(70px/2);
-   background-size: contain;
-   height: 70px;
-   width: 70px;
-   animation:  elastic-rotation 1.33s cubic-bezier(0.680, -0.550, 0.265, 1.550) infinite;
-   background-repeat: no-repeat;
-   background-position: center center;
-   z-index: 99999;
-   opacity: 1;
+  position: absolute;
+  top: 35%;
+  left: 45%;
+  margin-left: calc(-70px/2);
+  margin-top: calc(-70px/2);
+  background-size: contain;
+  height: 70px;
+  width: 70px;
+  animation:  elastic-rotation 1.33s cubic-bezier(0.680, -0.550, 0.265, 1.550) infinite;
+  background-repeat: no-repeat;
+  background-position: center center;
+  z-index: 99999;
+  opacity: 1;
 }
 
 .loader .spinner {
@@ -33,7 +31,6 @@
   visibility: hidden;
 }
 
-
 @keyframes elastic-rotation {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
@@ -43,10 +40,30 @@ body,
 .app-container,
 .app,
 .exploration,
-.result,
-.center-pane,
-.right-pane {
-  height: calc(100vh - 60px);
+.center-pane {
+  background-color: black;
+}
+
+@media (min-width: 768px) {
+  .right-pane {
+    z-index: 1;
+    position: absolute;
+    right: 10px;
+    top: 70px;
+    display: block;
+  }
+}
+
+@media (max-width: 767px) {
+  .right-pane {
+    display: none;
+  }
+}
+
+.left-pane {
+  position: relative;
+  z-index: 1;
+  display: block;
 }
 
 body {
@@ -57,25 +74,25 @@ body {
   height: 100%;
   padding: 0;
 }
-.left-pane {
-  position: relative;
-}
 
 .split-pane {
-  height: 49%;
+  margin-bottom: 30px;
+}
+
+.vector-list,
+.cluster-list {
   overflow-y: scroll;
+  height: 350px;
 }
 
-.split-pane.upper {
-  margin-bottom: 2%;
+.right {
+  right: 10px;
 }
 
-.app-view-container {
-  margin-top: 60px;
-}
-
-.exploration .alert {
-  margin-top: 30px;
+.alert {
+  top: 70px;
+  right: 10px;
+  position: absolute;
 }
 
 .exploration .stats {
@@ -83,12 +100,14 @@ body {
   bottom: 5px;
   left: 5px;
   font-size: 10px;
+  color: white;
 }
 
 .scatter-plot-2d-container,
 .scatter-plot-2d {
   width: 100%;
   height: 100%;
+  text-align: center;
 }
 
 .scatter-plot-2d-container .view-options {
@@ -100,13 +119,17 @@ body {
 .scatter-plot-2d .axis path,
 .scatter-plot-2d .axis line {
   fill: none;
-  stroke: black;
+  stroke: white;
   shape-rendering: crispEdges;
+}
+
+.scatter-plot-2d .axis-text {
+  stroke: white;
 }
 
 .scatter-plot-2d .axis-label {
   font-size: 14px;
-  fill: black;
+  fill: white;
   stroke: none;
 }
 
@@ -115,10 +138,15 @@ body {
 }
 
 .scatter-plot-2d text.node-label {
+  cursor: default;
 }
 
 .exploration .info {
   width: 100%;
+}
+
+.list-group a {
+  color: black;
 }
 
 .exploration .list-group-item {
@@ -127,10 +155,32 @@ body {
 }
 
 .cluster-list .list-group-item .badge {
+  top: 15px;
   right: 6px;
   position: absolute;
+  color: white;
 }
 
 .comparison {
   padding: 10px;
+}
+
+.form-group {
+  color: white;
+}
+
+.panel-heading {
+  color: white;
+}
+
+.scatter-plot-2d-container text.node-tooltip {
+  fill: white;
+  stroke: white;
+  font-size: 20px;
+}
+
+.query-column {
+  position: absolute;
+  z-index: 2;
+  margin-top: 10px;
 }
