@@ -1,9 +1,9 @@
 
-# Word2Vec Explorer
+# Word2Vec Visualizer
 
 This tool helps you visualize, query and explore Word2Vec models. Word2Vec is a deep learning technique that feeds massive amounts of text into a shallow neural net which can then be used to solve a variety of NLP and ML problems.
 
-![SCREEN](https://raw.githubusercontent.com/cunum/word2vec-explorer/master/public/screenshots/screen.png)
+![SCREEN](https://github.com/cunum/word2vec-explorer/blob/master/public/screen.png?raw=true)
 
 Word2Vec Explorer uses [Gensim](https://github.com/piskvorky/gensim) to list and compare vectors and it uses [t-SNE](https://github.com/danielfrg/tsne) to visualize a dimensional reduction of the vector space. [Scikit-Learn](http://scikit-learn.org/stable/) is used for K-Means clustering.
 
