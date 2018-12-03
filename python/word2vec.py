@@ -12,9 +12,10 @@ class DocumentIterator(object):
                 yield line.lower().split()
 
 def create_model():
-    documents = DocumentIterator('../documents')
-    model = gensim.models.Word2Vec(documents, size=150, window=10, min_count=5, workers=10)
-    model.save("../word2vec.model")
+    if os.path.isdir("../documents"):
+        documents = DocumentIterator("../documents")
+        model = gensim.models.Word2Vec(documents, size=150, window=10, min_count=5, workers=10)
+        model.save("../word2vec.model")
 
 if __name__ == '__main__':
     create_model()

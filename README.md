@@ -25,12 +25,12 @@ docker pull cunum/word2vec-visualizer
 Option 1: Run the visualizer with a Word2Vec model
 
 ```bash
-docker run -p 8080:8080 -v /path/to/word2vec.model:/word2vec.model cunum.com/word2vec-visualizer
+docker run -p 8080:8080 -v /path/to/word2vec.model:/word2vec.model cunum/word2vec-visualizer
 ```
 
 Option 2: Run the visualizer with plain text documents
 ```bash
-docker run -p 8080:8080 -v /path/to/documents:/documents cunum.com/word2vec-visualizer
+docker run -p 8080:8080 -v /path/to/documents:/documents cunum/word2vec-visualizer
 ```
 
 Now point your browser at [localhost:8080](http://localhost:8080/) to load the explorer!
