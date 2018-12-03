@@ -39,11 +39,11 @@ Now point your browser at [localhost:8080](http://localhost:8080/) to load the e
 
 A classic example of Word2Vec is the Google News model trained on 600M sentences: [GoogleNews-vectors-negative300.bin.gz](https://drive.google.com/file/d/0B7XkCwpI5KDYNlNUTTlSS21pQmM/edit?usp=sharing)
 
-[More pre-trained models]](https://github.com/3Top/word2vec-api#where-to-get-a-pretrained-models)
+[More pre-trained models](https://github.com/3Top/word2vec-api#where-to-get-a-pretrained-models)
 
 ### Local development
 
-- To install tsne you need openblas, on Mac with Homebrew type in terminal:
+- To install tsne you need openblas. On Mac with Homebrew type in terminal:
 ```
 brew install openblas
 LDFLAGS=-L/usr/local/opt/openblas/lib CPPFLAGS=-I/usr/local/opt/openblas/include
