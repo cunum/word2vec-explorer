@@ -11,9 +11,7 @@ Word2Vec Visualizer uses [Gensim](https://github.com/piskvorky/gensim) to list a
 
 ### Setup
 
-Just use the docker image on docker hub  [```cunum/word2vec-visualizer```](https://hub.docker.com/r/cunum/word2vec-visualizer/) and directly jump to step Usage.
-
-Or clone the project and build the docker image yourself by running in project directory
+Just use the pre-built docker image on docker hub  [```cunum/word2vec-visualizer```](https://hub.docker.com/r/cunum/word2vec-visualizer/) and directly jump to step **Usage** or clone the project and build the docker image yourself by running in project directory
 ```bash
 docker build . -t cunum/word2vec-visualizer
 ```
@@ -31,7 +29,7 @@ docker run -p 8080:8080 -v /path/to/word2vec.model:/word2vec.model cunum/word2ve
 docker run -p 8080:8080 -v /path/to/documents:/documents cunum/word2vec-visualizer
 ```
 
-Now point your browser at [localhost:8080](http://localhost:8080/) to load the explorer
+Now point your browser at [http://localhost:8080](http://localhost:8080/) to load the explorer
 
 ### Obtaining pre-trained models
 
