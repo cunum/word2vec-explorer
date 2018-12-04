@@ -4,10 +4,10 @@ matrix:
     python: 2.7
     install:
     - pip install -r python/requirements.txt
+    script:
+    - echo "no tests yet"
   - language: node_js
     node_js:
     - "node"
-    before_install:
-    - npm install npm@latest -g
     script:
     - npm run build
