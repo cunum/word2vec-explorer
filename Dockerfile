@@ -9,11 +9,11 @@ RUN apk add --update \
 
 ADD ./ ./
 
-RUN npm install -s --no-progress && \
+RUN npm install -s --no-progress --production && \
     npm run build && \
-    npm prune --production
+    rm -rf node_modules
 
-RUN pip install -r python/requirements.txt
+RUN pip install --no-cache-dir -r python/requirements.txt
 
 EXPOSE 8080
 
