@@ -20,7 +20,7 @@ class VectorList extends Component {
         let distance = Math.round(data.distances[i] * 100) / 100
         badgeHtml = <span className='badge badge-primary badge-pill' title={data.distances[i]}>{distance}</span>
       }
-      itemsHtml.push(<a href='#' className={className} key={i} onClick={this.onClick} data-index={i} data-label={labels[i]}>{badgeHtml}{labels[i]}</a>)
+      itemsHtml.push(<a href='/' className={className} key={i} onClick={this.onClick} data-index={i} data-label={labels[i]}>{badgeHtml}{labels[i]}</a>)
     }
     return (
       <div>

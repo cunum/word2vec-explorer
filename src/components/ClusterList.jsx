@@ -21,7 +21,7 @@ class ClusterList extends Component {
       let label = data.labels[closestNodeId]
       let numClusters = data.clusters.filter((cluster) => cluster === i).length
       let badgeStyle = {backgroundColor: color(i)}
-      itemsHtml.push(<a href="#" className={className} key={i} onClick={this.onClick} data-index={i}><span className='badge' style={badgeStyle}>{numClusters}</span>{label}</a>)
+      itemsHtml.push(<a href="/" className={className} key={i} onClick={this.onClick} data-index={i}><span className='badge' style={badgeStyle}>{numClusters}</span>{label}</a>)
     }
     return (
       <div>

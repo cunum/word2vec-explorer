@@ -8,6 +8,6 @@ matrix:
     - echo "no tests yet"
   - language: node_js
     node_js:
-    - "10"
+    - "node"
     script:
     - npm run build
