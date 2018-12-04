@@ -35,6 +35,6 @@ Now point your browser at [http://localhost:8080](http://localhost:8080/) to loa
 
 A classic example of Word2Vec is the Google News model trained on 600M sentences
  
-[GoogleNews-vectors-negative300.bin.gz](https://drive.google.com/file/d/0B7XkCwpI5KDYNlNUTTlSS21pQmM/edit?usp=sharing)
+- [GoogleNews-vectors-negative300.bin.gz](https://drive.google.com/file/d/0B7XkCwpI5KDYNlNUTTlSS21pQmM/edit?usp=sharing)
 
-[More pre-trained models](https://github.com/3Top/word2vec-api#where-to-get-a-pretrained-models)
+- [More models](https://github.com/3Top/word2vec-api#where-to-get-a-pretrained-models)
