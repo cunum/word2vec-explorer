@@ -10,13 +10,15 @@ class ExploreSection extends Component {
       limit: 1000,
       num_clusters: 30,
       showLabels: true,
-      explore: false
+      explore: false,
+      loading: false
     }
     this.changeLimit = this.changeLimit.bind(this);
     this.changeNumClusters = this.changeNumClusters.bind(this);
     this.changeQuery = this.changeQuery.bind(this);
     this.changeShowLabels = this.changeShowLabels.bind(this);
     this.changeExplore = this.changeExplore.bind(this);
+    this.loadingComplete = this.loadingComplete.bind(this);
   }
 
   changeLimit(e) {
@@ -40,7 +42,11 @@ class ExploreSection extends Component {
 
   changeExplore (e) {
     e.preventDefault();
-    this.setState({ explore: !this.state.explore });
+    this.setState({ explore: !this.state.explore, loading: true });
+  }
+
+  loadingComplete() {
+    this.setState({ loading: false });
   }
 
   render () {
@@ -65,12 +71,24 @@ class ExploreSection extends Component {
                 <label><input type='checkbox' checked={this.state.showLabels} onChange={this.changeShowLabels} /> Show Labels</label>
               </div>
               <div className='form-group'>
-                <input type='submit' className='btn btn-outline-light btn-block' onClick={this.changeExplore} value='Explore'/>
+                <input type='submit' disabled={this.state.loading} className='btn btn-outline-light btn-block' onClick={this.changeExplore} value='Explore'/>
               </div>
             </form>
           </div>
         </div>
-        <Exploration params={this.state} onSelect={this.changeQuery} />
+        <Exploration params={this.state} onSelect={this.changeQuery} onLoadingComplete={this.loadingComplete} />
+        {this.state.loading && (
+          <div id="circle">
+            <div className="loader">
+              <div className="loader">
+                <div className="loader">
+                  <div className="loader">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     )
   }

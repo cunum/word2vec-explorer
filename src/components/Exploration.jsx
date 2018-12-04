@@ -93,10 +93,18 @@ class Exploration extends Component {
               error: data.error ? new Error(data.error.message) : null,
               result: data.result
             });
+            this.props.onLoadingComplete();
           })
-          .catch(error => console.log(error));
+          .catch(error => {
+              this.props.onLoadingComplete();
+              console.log(error);
+            }
+          );
       })
-      .catch(error => console.log(error));
+      .catch(error => {
+        this.props.onLoadingComplete();
+        console.log(error)
+      });
   }
 }
 

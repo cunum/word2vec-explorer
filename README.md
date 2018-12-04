@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/cunum/word2vec-visualizer.png?branch=master)](https://travis-ci.org/cunum/word2vec-visualizer)
+[![Node version](https://img.shields.io/node/v/latest-version.svg?style=flat)](http://nodejs.org/download/)
 
 # Word2Vec Visualizer
 
@@ -13,7 +15,7 @@ Just use the docker image on docker hub  ```cunum/word2vec-visualizer``` and dir
 
 Or clone the project and build the docker image yourself by running in project directory
 ```bash
-docker build . -t word2vec-visualizer
+docker build . -t cunum/word2vec-visualizer
 ```
 
 ### Usage

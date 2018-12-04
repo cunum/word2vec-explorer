@@ -14,8 +14,10 @@ class DocumentIterator(object):
 def create_model():
     if os.path.isdir("../documents"):
         documents = DocumentIterator("../documents")
+        print "Started to train the model, please wait..."
         model = gensim.models.Word2Vec(documents, size=150, window=10, min_count=5, workers=10)
         model.save("../word2vec.model")
+        print "The model was successfully trained, happy exploring!"
 
 if __name__ == '__main__':
     create_model()
