@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/cunum/word2vec-visualizer.png?branch=master)](https://travis-ci.org/cunum/word2vec-visualizer)
 [![Docker Status](https://img.shields.io/docker/build/cunum/word2vec-visualizer.svg)](https://hub.docker.com/r/cunum/word2vec-visualizer/)
 [![Node version](https://img.shields.io/node/v/latest-version.svg?style=flat)](http://nodejs.org/download/)
 
