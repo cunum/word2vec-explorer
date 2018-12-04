@@ -20,7 +20,7 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "word2vec-visualizer"
   },
   "browserslist": [
     ">0.2%",

@@ -2,6 +2,5 @@ CherryPy==17.4.1
 Cython==0.29.1
 gensim==3.6.0
 numpy==1.15.4
-requests==2.20.1
 scikit-learn==0.20.1
 Routes==2.4.1

@@ -1,11 +1,10 @@
-
 import math
 import gensim
 import cPickle
 import numpy as np
-from tsne import bh_sne
 from sklearn.cluster import KMeans
 from word2vec import create_model
+from sklearn.manifold import TSNE
 
 class Exploration(dict):
 
@@ -22,7 +21,8 @@ class Exploration(dict):
     def reduce(self):
         print('Performing tSNE reduction' +
               'on {} vectors'.format(len(self.vectors)))
-        self.reduction = bh_sne(np.array(self.vectors, dtype=np.float64))
+        arr = np.array(self.vectors, dtype=np.float64)
+        self.reduction = TSNE().fit_transform(arr)
 
     def cluster(self, num_clusters=30):
         clustering = KMeans(n_clusters=num_clusters)

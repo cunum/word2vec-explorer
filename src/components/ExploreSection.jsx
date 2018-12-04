@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
 import Exploration from './Exploration';
-import qs from 'qs'
 
 class ExploreSection extends Component {
 
   constructor (props) {
     super(props);
-
-    const queryParams = this.props.location.search.replace("?", "");
-    const queryStr = qs.parse(queryParams);
     this.state = {
-      query: queryStr.query ? queryStr.query : '',
-      limit: queryStr.limit ? parseInt(queryStr.limit) : 1000,
-      num_clusters: queryStr.clusters ? parseInt(queryStr.clusters) : 30,
+      query: '',
+      limit: 1000,
+      num_clusters: 30,
       showLabels: true,
       explore: false
     }
