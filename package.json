@@ -14,7 +14,7 @@
     "react-scripts": "2.1.1"
   },
   "scripts": {
-    "start": "PORT=3030 react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -22,6 +22,7 @@
   "eslintConfig": {
     "extends": "word2vec-visualizer"
   },
+  "proxy": "http://localhost:8080",
   "browserslist": [
     ">0.2%",
     "not dead",
