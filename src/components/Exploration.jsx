@@ -85,7 +85,7 @@ class Exploration extends Component {
     query.append("limit", (params.limit || 1000));
     query.append("enable_clustering", true);
     query.append("num_clusters", params.num_clusters);
-    fetch(config.baseUrl + config.explorePath + '?' + query)
+    fetch(config.basePath + config.explorePath + '?' + query)
       .then(response => {
         response.json()
           .then(data => {

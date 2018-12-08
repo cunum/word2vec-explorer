@@ -61,7 +61,7 @@ class CompareSection extends Component {
     params.append("queries", queryA);
     params.append("queries", queryB);
     params.append("limit", "30");
-    fetch(config.baseUrl + config.comparePath + '?' + params).then(response => {
+    fetch(config.basePath + config.comparePath + '?' + params).then(response => {
       response.json().then(data => {
         this.setState({
           error: response.error ? new Error(response.error.message) : null,

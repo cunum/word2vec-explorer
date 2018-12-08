@@ -86,12 +86,12 @@ body {
 }
 
 .right {
-  right: 10px;
+  right: 20px;
 }
 
 .alert {
   top: 70px;
-  right: 10px;
+  right: 20px;
   position: absolute;
 }
 
