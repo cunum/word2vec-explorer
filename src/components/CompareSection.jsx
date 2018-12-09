@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
 import ScatterPlot2d from './ScatterPlot2d';
-import fetch from 'isomorphic-fetch'
 import { config } from '../config'
 
 class CompareSection extends Component {
@@ -61,14 +60,15 @@ class CompareSection extends Component {
     params.append("queries", queryA);
     params.append("queries", queryB);
     params.append("limit", "30");
-    fetch(config.basePath + config.comparePath + '?' + params).then(response => {
-      response.json().then(data => {
-        this.setState({
-          error: response.error ? new Error(response.error.message) : null,
-          result: data.result,
-          loading: false
-        })
-      });
+    fetch(config.basePath + config.comparePath + '?' + params)
+      .then(response => {
+        response.json().then(data => {
+          this.setState({
+            error: response.error ? new Error(response.error.message) : null,
+            result: data.result,
+            loading: false
+          })
+        });
     });
   }
 

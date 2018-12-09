@@ -5,7 +5,6 @@ import ScatterPlot2d from './ScatterPlot2d';
 import VectorList from './VectorList';
 import Stats from './Stats';
 import * as d3 from 'd3';
-import fetch from 'isomorphic-fetch';
 import { config } from '../config'
 
 class Exploration extends Component {
@@ -87,8 +86,7 @@ class Exploration extends Component {
     query.append("num_clusters", params.num_clusters);
     fetch(config.basePath + config.explorePath + '?' + query)
       .then(response => {
-        response.json()
-          .then(data => {
+        response.json().then(data => {
             this.setState({
               error: data.error ? new Error(data.error.message) : null,
               result: data.result
